@@ -1,32 +1,33 @@
-import os
+import kivy
+kivy.require('1.9.1')
+
 from kivy.app import App
 from kivy.adapters.dictadapter import DictAdapter
 from kivy.uix.listview import ListItemButton, ListItemLabel, CompositeListItem, ListView
 from kivy.uix.gridlayout import GridLayout
 from kivy.lang import Builder
-from kivy.factory import Factory
 from kivy.core.text import LabelBase  
+# FIXME this shouldn't be necessary
+from kivy.core.window import Window
 
-FONT_FOLDER = os.path.join("assets", "font")
+import common
 
-LabelBase.register(name="Beleren",  
-                   fn_regular= os.path.join(FONT_FOLDER, "beleren-bold_P1.01.ttf"),
-                   fn_bold=os.path.join(FONT_FOLDER, "beleren-bold_P1.01.ttf"))
+class MainApp(App):
 
-LabelBase.register(name="Matrix",  
-                   fn_regular=os.path.join(FONT_FOLDER, "MATRIX.ttf"),
-                   fn_bold=os.path.join(FONT_FOLDER, "MatrixBold.ttf"))
+    def build(self):
 
-LabelBase.register(name="MatrixSmallCaps",  
-                   fn_regular=os.path.join(FONT_FOLDER, "MatrixRegularSmallCaps_0.ttf"),
-                   fn_bold=os.path.join(FONT_FOLDER, "matrixbsc.ttf"))
+        # the root is created in pictures.kv
+        #root = self.root
 
-LabelBase.register(name="MPlanti",  
-                   fn_regular=os.path.join(FONT_FOLDER, "mplantin.ttf"),
-                   fn_bold=os.path.join(FONT_FOLDER, "mplanti1.ttf"),
-                   fn_italic=os.path.join(FONT_FOLDER, "mplantinit.ttf"))
+        #root.add_widget()
+    
+        #for font in common.FONTS:
+        #    LabelBase.register(**font)
 
-Builder.load_file("Eternities.kv")
+        self.root = MainView(cols=1)
+
+    def on_pause(self):
+        return True
 
 class MainView(GridLayout):
     '''Uses :class:`CompositeListItem` for list item views comprised by two
@@ -36,8 +37,9 @@ class MainView(GridLayout):
     '''
 
     def __init__(self, **kwargs):
-        kwargs['cols'] = 1
         super(MainView, self).__init__(**kwargs)
+
+        Builder.load_file("Eternities.kv")
 
         # This is quite an involved args_converter, so we should go through the
         # details. A CompositeListItem instance is made with the args
@@ -50,7 +52,8 @@ class MainView(GridLayout):
             'size_hint_y': None,
             'height': 25,
             'cls_dicts': [{'cls': ListItemButton,
-                           'kwargs': {'text': '[font=assets\font\beleren-bold_P1.01]%s[/font]' % rec['text'],
+                           'kwargs': {#'text': '[font=Beleren]%s[/font]' % rec['text'],
+                                      'text': rec["text"],
                                       'markup': True}},
                            #{'cls': ListItemLabel,
                            # 'kwargs': {'text': "Middle-{0}".format(rec['text']),
@@ -73,5 +76,5 @@ class MainView(GridLayout):
         self.add_widget(list_view)
 
 if __name__ == "__main__":
-    from kivy.base import runTouchApp
-    runTouchApp(MainView(width=800))
+    MainApp().run()
+

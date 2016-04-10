@@ -5,20 +5,20 @@
     ListItemButton:
         index: ctx.index
         text: ctx.text
-        #text: "%s" % str(dir(self))
         size_hint_x: 0.9
         size_hint_y: 0.65
         text_size: self.width * 0.95, None
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
     Image:
         id: loyalty
-        source: "assets\loyaltyup.png"
+        source: "assets/loyaltyup.png"
         size_hint_x: 0.1
         size_hint_y: 1.0
         #pos_hint: {'center_x': -0.75, 'center_y': 0.5}
         pos_hint: {'x': 0.915, 'y': 0}
     Label:
-        text: '[font=MPlanti][b]+12[/b][/font]'
+        #text: '[font=MPlanti][b]+12[/b][/font]'
+		text: '[b]+12[/b]'
         width: 20
         halight: 'center'
         markup: True
