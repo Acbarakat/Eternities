@@ -8,14 +8,17 @@ from kivy.uix.image import Image
 #from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.lang import Builder
-#from kivy.core.text import LabelBase  
-# FIXME this shouldn't be necessary
-from kivy.core.window import Window
+from kivy.core.text import LabelBase  
 
 import common
 
 class MainApp(App):
-
+    def build_config(self, config):
+        config.setdefaults('section1', {
+            'key1': 'value1',
+            'key2': '42'
+        })
+    
     def build(self):
 
         # the root is created in pictures.kv
@@ -23,8 +26,8 @@ class MainApp(App):
 
         #root.add_widget()
     
-        #for font in common.FONTS:
-        #    LabelBase.register(**font)
+        for font in common.FONTS:
+            LabelBase.register(**font)
 
         self.root = MainView(cols=1, size_hint=(1.0, 1.0))
 
@@ -57,6 +60,7 @@ class MainView(GridLayout):
         # composite: ListItemButton and ListItemLabel.
         args_converter = lambda row_index, rec: {
             'text': rec['text'],
+            'loyalty': str(rec['loyalty']),
             'size_hint_y': None,
             'height': self.height / common.RATIO,
             #'cls_dicts': [{'cls': ListItemButton,

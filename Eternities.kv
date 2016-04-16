@@ -4,11 +4,12 @@
 	height: ctx.height
     ListItemButton:
         index: ctx.index
-        text: ctx.text
+        text: "[font=Beleren]%s[/font]" % ctx.text
         size_hint_x: 0.9
         size_hint_y: 0.65
         #text_size: self.width * 0.95, None
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+	    markup: True
     Image:
         source: "assets/loyaltyup.png"
         size_hint_x: 0.1
@@ -16,7 +17,7 @@
         #pos_hint: {'center_x': -0.75, 'center_y': 0.5}
         pos_hint: {'x': 0.915, 'y': 0}
     Label:
-		#text: ctx.loyalty
+		text: "[font=Beleren]%s[/font]" % ctx.loyalty
         width: 20
         halight: 'center'
         markup: True

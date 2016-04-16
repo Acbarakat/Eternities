@@ -34,11 +34,11 @@
   <ItemGroup>
     <Content Include="assets\font\beleren-bold_P1.01.ttf" />
     <Content Include="assets\font\belerensmallcaps-bold.ttf" />
-    <Content Include="assets\font\MATRIX.TTF" />
+    <Content Include="assets\font\MatrixRegular.ttf" />
     <Content Include="assets\font\matrixb.ttf" />
     <Content Include="assets\font\MatrixBold.ttf" />
-    <Content Include="assets\font\matrixbsc.ttf" />
-    <Content Include="assets\font\MatrixRegularSmallCaps_0.ttf" />
+    <Content Include="assets\font\MatrixSmallCaps_Bold.ttf" />
+    <Content Include="assets\font\MatrixSmallCaps_Regular.ttf" />
     <Content Include="assets\font\ModMatrix.ttf" />
     <Content Include="assets\font\mplanti1.ttf" />
     <Content Include="assets\font\mplantin.ttf" />
