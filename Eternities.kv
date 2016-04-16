@@ -1,7 +1,6 @@
 [ThumbnailedListItem@SelectableView+RelativeLayout]:
     index: ctx.index
     size_hint_y: ctx.size_hint_y
-    height: ctx.height * 1.75
     ListItemButton:
         index: ctx.index
         text: ctx.text
@@ -10,15 +9,13 @@
         text_size: self.width * 0.95, None
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
     Image:
-        id: loyalty
         source: "assets/loyaltyup.png"
         size_hint_x: 0.1
         size_hint_y: 1.0
         #pos_hint: {'center_x': -0.75, 'center_y': 0.5}
         pos_hint: {'x': 0.915, 'y': 0}
     Label:
-        #text: '[font=MPlanti][b]+12[/b][/font]'
-		text: '[b]+12[/b]'
+		#text: ctx.loyalty
         width: 20
         halight: 'center'
         markup: True

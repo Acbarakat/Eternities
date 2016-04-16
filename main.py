@@ -4,9 +4,11 @@ kivy.require('1.9.1')
 from kivy.app import App
 from kivy.adapters.dictadapter import DictAdapter
 from kivy.uix.listview import ListItemButton, ListItemLabel, CompositeListItem, ListView
+from kivy.uix.image import Image
+#from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.lang import Builder
-from kivy.core.text import LabelBase  
+#from kivy.core.text import LabelBase  
 # FIXME this shouldn't be necessary
 from kivy.core.window import Window
 
@@ -24,7 +26,7 @@ class MainApp(App):
         #for font in common.FONTS:
         #    LabelBase.register(**font)
 
-        self.root = MainView(cols=1)
+        self.root = MainView(cols=1, size_hint=(1.0, 1.0))
 
     def on_pause(self):
         return True
@@ -50,24 +52,31 @@ class MainView(GridLayout):
         args_converter = lambda row_index, rec: {
             'text': rec['text'],
             'size_hint_y': None,
-            'height': 25,
-            'cls_dicts': [{'cls': ListItemButton,
-                           'kwargs': {#'text': '[font=Beleren]%s[/font]' % rec['text'],
-                                      'text': rec["text"],
-                                      'markup': True}},
-                           #{'cls': ListItemLabel,
-                           # 'kwargs': {'text': "Middle-{0}".format(rec['text']),
-                           #            'is_representing_cls': True}},
-                           ]}
+            'height': self.size[0] / 20.0,
+            #'cls_dicts': [{'cls': ListItemButton,
+            #               'kwargs': {'text': rec["text"],
+            #                          'markup': True}},
+            #               {'cls': Image,
+            #                'kwargs': {'source': "assets/loyaltyup.png",
+            #                           }},
+            #               {'cls': ListItemLabel,
+            #                'kwargs': {'text': str(rec["loyalty"]),
+            #                           'markup': True}},
+            #               ]
+        }
 
-        integers_dict = {str(i): {'text': "This is a test ability string #%s" % str(i), 'is_selected': False} for i in range(5)}
-        item_strings  = ["{0}".format(index) for index in range(5)]
+        integers_dict = {str(i): {'text': "This is a test ability string #%s" % str(i),
+                                  'loyalty': i,
+                                  'is_selected': False} for i in range(50)}
+
+        item_strings  = ["{0}".format(index) for index in range(50)]
 
         dict_adapter = DictAdapter(sorted_keys=item_strings,
                                    data=integers_dict,
                                    args_converter=args_converter,
                                    selection_mode='single',
                                    allow_empty_selection=False,
+                                   #cls=CompositeListItem)
                                    template='ThumbnailedListItem')
 
         # Use the adapter in our ListView:

@@ -5,5 +5,8 @@ To install all required auxiliary libraries use the following scripts depending 
 Windows:
  ```requirements_win.bat```
 
- Linux:
+Linux:
  ```sudo requirements_lin.sh```
+
+
+ An experimental profiling tool for the kv lang is also included. You can activate it by setting the environment variable KIVY_PROFILE_LANG=1. It will then generate an html file named builder_stats.html.
