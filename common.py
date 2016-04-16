@@ -1,4 +1,9 @@
 import os
+import sys
+
+RATIO = 20.0
+if sys.platform != "win32":
+    RATIO = 7.5
 
 FONTS = [  
     {

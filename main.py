@@ -43,6 +43,12 @@ class MainView(GridLayout):
 
         Builder.load_file("Eternities.kv")
 
+        lHeight = self.size[0] / common.RATIO
+        print(self.size)
+        print(self.height)
+        print(common.RATIO)
+        print(lHeight)
+
         # This is quite an involved args_converter, so we should go through the
         # details. A CompositeListItem instance is made with the args
         # returned by this converter. The first three, text, size_hint_y,
@@ -52,7 +58,7 @@ class MainView(GridLayout):
         args_converter = lambda row_index, rec: {
             'text': rec['text'],
             'size_hint_y': None,
-            'height': self.size[0] / 20.0,
+            'height': self.height / common.RATIO,
             #'cls_dicts': [{'cls': ListItemButton,
             #               'kwargs': {'text': rec["text"],
             #                          'markup': True}},
