@@ -48,6 +48,7 @@
     <Content Include="assets\loyaltydown.png" />
     <Content Include="assets\loyaltynaught.png" />
     <Content Include="assets\loyaltyup.png" />
+    <Content Include="assets\particles\templates\crown_light.pex" />
     <Content Include="assets\persona27.png" />
     <Content Include="buildozer.spec" />
     <Content Include="main.kv">
@@ -65,6 +66,8 @@
   <ItemGroup>
     <Folder Include="assets\" />
     <Folder Include="assets\font\" />
+    <Folder Include="assets\particles\" />
+    <Folder Include="assets\particles\templates\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

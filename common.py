@@ -1,8 +1,8 @@
 import sys
 
 RATIO = 20.0
-if sys.platform != "win32":
-    RATIO = 7.5
+#if sys.platform != "win32":
+#    RATIO = 7.5
 
 LOYALTY = {
             "0": "./assets/loyaltynaught.png",

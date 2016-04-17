@@ -7,7 +7,8 @@ from kivy.uix.listview import ListView
 from kivy.uix.image import Image
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
-from kivy.core.text import LabelBase  
+from kivy.core.text import LabelBase
+import particlesystem as kParticles
 
 import common
 
@@ -19,16 +20,16 @@ class MainApp(App):
         })
     
     def build(self):
-
-        # the root is created in pictures.kv
-        #root = self.root
-
-        #self.root = FloatLayout()
-        #self.root.add_widget(MainView(cols=1, size_hint=(.6, 0.75)))
-        #self.root.add_widget(Image(source="./assets/persona27.png"))
+        new_particle = kParticles.ParticleSystem("./assets/particles/templates/crown_light.pex")
+        #TODO: Don't use static numbers
+        new_particle.pos = 250, 300
+        self.root.add_widget(new_particle)
+        new_particle.start()
     
         for font in common.FONTS:
             LabelBase.register(**font)
+
+        print(self.root.size)
 
     def on_pause(self):
         return True
@@ -45,6 +46,7 @@ class MainView(GridLayout):
 
         lHeight = self.size[0] / common.RATIO
         print(lHeight)
+        
 
         import random
 
@@ -84,7 +86,6 @@ class MainView(GridLayout):
 
         item_sort_list  = sorted(integers_dict.items(), key=lambda x: int(x[1]["loyalty"]))
         item_sort_list.reverse()
-        print(item_sort_list)
         item_sort_list  = [ x for x,y in item_sort_list ]
 
         dict_adapter = DictAdapter(sorted_keys=item_sort_list,
