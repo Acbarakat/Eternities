@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Druid",
+    "portrait": "./assets/portraits/druid.png",
+    "particles": "./assets/particles/templates/crown_light.pex",
+    "particles_offset": [ 250.0, 300.0, 1.0 ],
+    "abilities": [
+      {
+        "cost": "-XX",
+        "name": "???",
+        "description": "???????"
+      },
+      {
+        "cost": "-XX",
+        "name": "???",
+        "description": "???????"
+      },
+      {
+        "cost": "-X",
+        "name": "???",
+        "description": "???????"
+      }
+    ]
+  },
+  {
+
+  }
+]

@@ -9,7 +9,8 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.core.text import LabelBase
 import particlesystem as kParticles
-
+import json
+import random
 import common
 
 class MainApp(App):
@@ -20,16 +21,24 @@ class MainApp(App):
         })
     
     def build(self):
-        new_particle = kParticles.ParticleSystem("./assets/particles/templates/crown_light.pex")
+
+        with open("sample.json") as f:
+            class_data = json.load(f)       
+
+        new_particle = kParticles.ParticleSystem(class_data[0]["particles"])
         #TODO: Don't use static numbers
         new_particle.pos = 250, 300
-        self.root.add_widget(new_particle)
+        
+        self.root.children[-3].source = class_data[0]["portrait"]
+
+        if class_data[0]["particles_offset"][-1] > 0:
+            self.root.add_widget(new_particle)
+        else:
+            self.root.children[-2].add_widget(new_particle)
         new_particle.start()
     
         for font in common.FONTS:
             LabelBase.register(**font)
-
-        print(self.root.size)
 
     def on_pause(self):
         return True
@@ -46,16 +55,7 @@ class MainView(GridLayout):
 
         lHeight = self.size[0] / common.RATIO
         print(lHeight)
-        
 
-        import random
-
-        # This is quite an involved args_converter, so we should go through the
-        # details. A CompositeListItem instance is made with the args
-        # returned by this converter. The first three, text, size_hint_y,
-        # height are arguments for CompositeListItem. The cls_dicts list
-        # contains argument sets for each of the member widgets for this
-        # composite: ListItemButton and ListItemLabel.
         args_converter = lambda row_index, rec: {
             'text': str(self.height / common.RATIO) + rec['text'],
             'loyalty': rec['loyalty'],
@@ -73,15 +73,8 @@ class MainView(GridLayout):
             #               ]
         }
 
-        def random_loyalty():
-            x = random.randint(-10, 10)
-            if x > 0:
-                return "+%s" % x
-
-            return str(x)
-
         integers_dict = {str(i): {'text': "This is a test ability string #%s" % str(i),
-                                  'loyalty': random_loyalty(),
+                                  'loyalty': "0",
                                   'is_selected': False} for i in range(50)}
 
         item_sort_list  = sorted(integers_dict.items(), key=lambda x: int(x[1]["loyalty"]))

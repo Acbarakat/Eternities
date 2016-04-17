@@ -48,8 +48,23 @@
     <Content Include="assets\loyaltydown.png" />
     <Content Include="assets\loyaltynaught.png" />
     <Content Include="assets\loyaltyup.png" />
+    <Content Include="assets\particles\diamond.png" />
+    <Content Include="assets\particles\particle.png" />
+    <Content Include="assets\particles\particle2.png" />
+    <Content Include="assets\particles\particle3.png" />
+    <Content Include="assets\particles\smallsquare.png" />
+    <Content Include="assets\particles\smokeparticle.png" />
+    <Content Include="assets\particles\squareparticle.png" />
+    <Content Include="assets\particles\squareparticle2.png" />
     <Content Include="assets\particles\templates\crown_light.pex" />
-    <Content Include="assets\persona27.png" />
+    <Content Include="assets\particles\templates\greenspiral.pex" />
+    <Content Include="assets\particles\triangle.png" />
+    <Content Include="assets\particles\VFX-0-Circle.png" />
+    <Content Include="assets\particles\VFX-0-Smoke-2.png" />
+    <Content Include="assets\particles\VFX-0-Star.png" />
+    <Content Include="assets\particles\VFX-1-Star.png" />
+    <Content Include="assets\particles\VFX-2-Star.png" />
+    <Content Include="assets\portraits\druid.png" />
     <Content Include="buildozer.spec" />
     <Content Include="main.kv">
       <SubType>Code</SubType>
@@ -62,10 +77,14 @@
     <Content Include="requirements_win.bat">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="sample.json">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\" />
     <Folder Include="assets\font\" />
+    <Folder Include="assets\portraits\" />
     <Folder Include="assets\particles\" />
     <Folder Include="assets\particles\templates\" />
   </ItemGroup>
