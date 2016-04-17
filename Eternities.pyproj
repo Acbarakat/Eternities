@@ -48,8 +48,9 @@
     <Content Include="assets\loyaltydown.png" />
     <Content Include="assets\loyaltynaught.png" />
     <Content Include="assets\loyaltyup.png" />
+    <Content Include="assets\persona27.png" />
     <Content Include="buildozer.spec" />
-    <Content Include="Eternities.kv">
+    <Content Include="main.kv">
       <SubType>Code</SubType>
     </Content>
     <Content Include="README.md" />

@@ -5,9 +5,8 @@ from kivy.app import App
 from kivy.adapters.dictadapter import DictAdapter
 from kivy.uix.listview import ListItemButton, ListItemLabel, CompositeListItem, ListView
 from kivy.uix.image import Image
-#from kivy.uix.label import Label
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
-from kivy.lang import Builder
 from kivy.core.text import LabelBase  
 
 import common
@@ -24,12 +23,12 @@ class MainApp(App):
         # the root is created in pictures.kv
         #root = self.root
 
-        #root.add_widget()
+        self.root = FloatLayout()
+        self.root.add_widget(MainView(cols=1, size_hint=(.6, 0.75)))
+        self.root.add_widget(Image(source="./assets/persona27.png"))
     
         for font in common.FONTS:
             LabelBase.register(**font)
-
-        self.root = MainView(cols=1, size_hint=(1.0, 1.0))
 
     def on_pause(self):
         return True
@@ -44,13 +43,7 @@ class MainView(GridLayout):
     def __init__(self, **kwargs):
         super(MainView, self).__init__(**kwargs)
 
-        Builder.load_file("Eternities.kv")
-
         lHeight = self.size[0] / common.RATIO
-        print(self.size)
-        print(self.height)
-        print(common.RATIO)
-        print(lHeight)
 
         # This is quite an involved args_converter, so we should go through the
         # details. A CompositeListItem instance is made with the args
@@ -59,10 +52,9 @@ class MainView(GridLayout):
         # contains argument sets for each of the member widgets for this
         # composite: ListItemButton and ListItemLabel.
         args_converter = lambda row_index, rec: {
-            'text': rec['text'],
+            'text': str(self.height / common.RATIO), #rec['text'],
             'loyalty': str(rec['loyalty']),
-            'size_hint_y': None,
-            'height': self.height / common.RATIO,
+            'height': 30.0,
             #'cls_dicts': [{'cls': ListItemButton,
             #               'kwargs': {'text': rec["text"],
             #                          'markup': True}},
@@ -86,7 +78,6 @@ class MainView(GridLayout):
                                    args_converter=args_converter,
                                    selection_mode='single',
                                    allow_empty_selection=False,
-                                   #cls=CompositeListItem)
                                    template='ThumbnailedListItem')
 
         # Use the adapter in our ListView:
