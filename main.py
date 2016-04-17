@@ -3,7 +3,7 @@ kivy.require('1.9.1')
 
 from kivy.app import App
 from kivy.adapters.dictadapter import DictAdapter
-from kivy.uix.listview import ListItemButton, ListItemLabel, CompositeListItem, ListView
+from kivy.uix.listview import ListView
 from kivy.uix.image import Image
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
@@ -23,9 +23,9 @@ class MainApp(App):
         # the root is created in pictures.kv
         #root = self.root
 
-        self.root = FloatLayout()
-        self.root.add_widget(MainView(cols=1, size_hint=(.6, 0.75)))
-        self.root.add_widget(Image(source="./assets/persona27.png"))
+        #self.root = FloatLayout()
+        #self.root.add_widget(MainView(cols=1, size_hint=(.6, 0.75)))
+        #self.root.add_widget(Image(source="./assets/persona27.png"))
     
         for font in common.FONTS:
             LabelBase.register(**font)
@@ -44,6 +44,7 @@ class MainView(GridLayout):
         super(MainView, self).__init__(**kwargs)
 
         lHeight = self.size[0] / common.RATIO
+        print(lHeight)
 
         # This is quite an involved args_converter, so we should go through the
         # details. A CompositeListItem instance is made with the args

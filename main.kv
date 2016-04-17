@@ -1,3 +1,12 @@
+FloatLayout:
+	MainView:
+		cols: 1
+		size_hint: (.6, 0.6)
+		pos_hint: {'x': 0.25, 'y': 0.0}
+	Image:
+		source: "./assets/persona27.png"
+		pos_hint: {'x': -0.25, 'y': -0.25}
+
 [ThumbnailedListItem@SelectableView+RelativeLayout]:
     index: ctx.index
     size_hint_y: None
@@ -5,8 +14,7 @@
     ListItemButton:
         index: ctx.index
         text: "[font=Beleren]%s[/font]" % ctx.text
-        size_hint_x: 0.9
-        size_hint_y: 0.65
+        size_hint: (0.9, 0.65)
         #text_size: self.width * 0.95, None
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 	    markup: True
