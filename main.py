@@ -27,11 +27,11 @@ class MainApp(App):
 
         new_particle = kParticles.ParticleSystem(class_data[0]["particles"])
         #TODO: Don't use static numbers
-        new_particle.pos = 250, 300
+        new_particle.pos_hint = class_data[0]["particles_offset"]
         
         self.root.children[-3].source = class_data[0]["portrait"]
 
-        if class_data[0]["particles_offset"][-1] > 0:
+        if class_data[0]["particles_offset"]["z"] > 0:
             self.root.add_widget(new_particle)
         else:
             self.root.children[-2].add_widget(new_particle)
