@@ -1,9 +1,14 @@
-import os
 import sys
 
 RATIO = 20.0
 if sys.platform != "win32":
     RATIO = 7.5
+
+LOYALTY = {
+            "0": "./assets/loyaltynaught.png",
+            "+": "./assets/loyaltyup.png",
+            "-": "./assets/loyaltydown.png"
+          }
 
 FONTS = [  
     {

@@ -46,6 +46,8 @@ class MainView(GridLayout):
         lHeight = self.size[0] / common.RATIO
         print(lHeight)
 
+        import random
+
         # This is quite an involved args_converter, so we should go through the
         # details. A CompositeListItem instance is made with the args
         # returned by this converter. The first three, text, size_hint_y,
@@ -53,8 +55,9 @@ class MainView(GridLayout):
         # contains argument sets for each of the member widgets for this
         # composite: ListItemButton and ListItemLabel.
         args_converter = lambda row_index, rec: {
-            'text': str(self.height / common.RATIO), #rec['text'],
-            'loyalty': str(rec['loyalty']),
+            'text': str(self.height / common.RATIO) + rec['text'],
+            'loyalty': rec['loyalty'],
+            'loyalty_source': common.LOYALTY[rec['loyalty'][0]],
             'height': 30.0,
             #'cls_dicts': [{'cls': ListItemButton,
             #               'kwargs': {'text': rec["text"],
@@ -68,13 +71,23 @@ class MainView(GridLayout):
             #               ]
         }
 
+        def random_loyalty():
+            x = random.randint(-10, 10)
+            if x > 0:
+                return "+%s" % x
+
+            return str(x)
+
         integers_dict = {str(i): {'text': "This is a test ability string #%s" % str(i),
-                                  'loyalty': i,
+                                  'loyalty': random_loyalty(),
                                   'is_selected': False} for i in range(50)}
 
-        item_strings  = ["{0}".format(index) for index in range(50)]
+        item_sort_list  = sorted(integers_dict.items(), key=lambda x: int(x[1]["loyalty"]))
+        item_sort_list.reverse()
+        print(item_sort_list)
+        item_sort_list  = [ x for x,y in item_sort_list ]
 
-        dict_adapter = DictAdapter(sorted_keys=item_strings,
+        dict_adapter = DictAdapter(sorted_keys=item_sort_list,
                                    data=integers_dict,
                                    args_converter=args_converter,
                                    selection_mode='single',

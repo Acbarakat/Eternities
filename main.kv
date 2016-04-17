@@ -1,7 +1,7 @@
 FloatLayout:
 	MainView:
 		cols: 1
-		size_hint: (.6, 0.6)
+		size_hint: (.75, 0.55)
 		pos_hint: {'x': 0.25, 'y': 0.0}
 	Image:
 		source: "./assets/persona27.png"
@@ -19,10 +19,9 @@ FloatLayout:
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 	    markup: True
     Image:
-        source: "assets/loyaltyup.png"
+        source: ctx.loyalty_source
         size_hint_x: 0.1
         size_hint_y: 1.0
-        #pos_hint: {'center_x': -0.75, 'center_y': 0.5}
         pos_hint: {'x': 0.915, 'y': 0}
     Label:
 		text: "[font=Beleren]%s[/font]" % ctx.loyalty
