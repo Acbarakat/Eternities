@@ -4,19 +4,19 @@
 title = Eternities
 
 # (str) Package name
-package.name = myapp23
+package.name = eternities
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.test
+package.domain = org.pixhowl
 
 # (str) Source code where the main.py live
 source.dir = /home/ubuntu/Desktop/Eternities
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,ttf
+source.include_exts = py,png,jpg,kv,atlas,ttf,pex,json
 
 # (list) Source files to exclude (let empty to not exclude anything)
-source.exclude_exts = spec
+source.exclude_exts = spec,md,pyo,pyc
 
 # (list) List of directory to exclude (let empty to not exclude anything)
 source.exclude_dirs = tests, bin
@@ -40,7 +40,7 @@ requirements = kivy
 # requirements.source.kivy = ../../kivy
 
 # (list) Garden requirements
-#garden_requirements =
+#garden_requirements = particlesystem
 
 # (str) Presplash of the application
 #presplash.filename = %(source.dir)s/data/presplash.png
@@ -72,31 +72,31 @@ fullscreen = 1
 android.permissions = INTERNET
 
 # (int) Android API to use
-android.api = 19
+#android.api = 19
 
 # (int) Minimum API required
 #android.minapi = 9
 
 # (int) Android SDK version to use
-android.sdk = 20
+#android.sdk = 20
 
 # (str) Android NDK version to use
-android.ndk = 9c
+#android.ndk = 9c
 
 # (bool) Use --private data storage (True) or --dir public storage (False)
-android.private_storage = False
+#android.private_storage = False
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
-android.ndk_path = ~/.buildozer/android/platform/android-ndk-r9c
+3android.ndk_path = /home/ubuntu/.buildozer/android/platform/android-ndk-r9c
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
-android.sdk_path = ~/.buildozer/android/platform/android-sdk-20
+#android.sdk_path = /home/ubuntu/.buildozer/android/platform/android-sdk-20
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
-android.ant_path = ~/.buildozer/android/platform/apache-ant-1.9.4
+#android.ant_path = /home/ubuntu/.buildozer/android/platform/apache-ant-1.9.4
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
-#android.p4a_dir = ~/.buildozer/android/platform/python-for-android
+#android.p4a_dir = /home/ubuntu/.buildozer/android/platform/python-for-android
 
 # (list) python-for-android whitelist
 #android.p4a_whitelist =

@@ -57,13 +57,47 @@
     <Content Include="assets\particles\squareparticle.png" />
     <Content Include="assets\particles\squareparticle2.png" />
     <Content Include="assets\particles\templates\crown_light.pex" />
+    <Content Include="assets\particles\templates\drugs.pex" />
+    <Content Include="assets\particles\templates\erupt.pex" />
     <Content Include="assets\particles\templates\greenspiral.pex" />
+    <Content Include="assets\particles\templates\sun.pex" />
     <Content Include="assets\particles\triangle.png" />
     <Content Include="assets\particles\VFX-0-Circle.png" />
     <Content Include="assets\particles\VFX-0-Smoke-2.png" />
     <Content Include="assets\particles\VFX-0-Star.png" />
     <Content Include="assets\particles\VFX-1-Star.png" />
     <Content Include="assets\particles\VFX-2-Star.png" />
+    <Content Include="assets\portraits\0.png" />
+    <Content Include="assets\portraits\1.png" />
+    <Content Include="assets\portraits\10.png" />
+    <Content Include="assets\portraits\11.png" />
+    <Content Include="assets\portraits\12.png" />
+    <Content Include="assets\portraits\13.png" />
+    <Content Include="assets\portraits\14.png" />
+    <Content Include="assets\portraits\15.png" />
+    <Content Include="assets\portraits\16.png" />
+    <Content Include="assets\portraits\17.png" />
+    <Content Include="assets\portraits\18.png" />
+    <Content Include="assets\portraits\19.png" />
+    <Content Include="assets\portraits\2.png" />
+    <Content Include="assets\portraits\20.png" />
+    <Content Include="assets\portraits\21.png" />
+    <Content Include="assets\portraits\22.png" />
+    <Content Include="assets\portraits\23.png" />
+    <Content Include="assets\portraits\24.png" />
+    <Content Include="assets\portraits\25.png" />
+    <Content Include="assets\portraits\26.png" />
+    <Content Include="assets\portraits\27.png" />
+    <Content Include="assets\portraits\28.png" />
+    <Content Include="assets\portraits\29.png" />
+    <Content Include="assets\portraits\3.png" />
+    <Content Include="assets\portraits\30.png" />
+    <Content Include="assets\portraits\4.png" />
+    <Content Include="assets\portraits\5.png" />
+    <Content Include="assets\portraits\6.png" />
+    <Content Include="assets\portraits\7.png" />
+    <Content Include="assets\portraits\8.png" />
+    <Content Include="assets\portraits\9.png" />
     <Content Include="assets\portraits\druid.png" />
     <Content Include="buildozer.spec" />
     <Content Include="main.kv">
@@ -80,6 +114,7 @@
     <Content Include="sample.json">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="settings.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\" />

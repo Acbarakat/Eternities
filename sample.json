@@ -1,28 +1,28 @@
 [
+   {
+    "title": "Mage",
+    "portrait": "./assets/portraits/17.png",
+    "particles": "./assets/particles/templates/sun.pex",
+    "particles_offset": {"x": 0.3, "y": 0.15, "z":  1.0}
+  },
+  {
+    "title": "Mage",
+    "portrait": "./assets/portraits/9.png",
+    "particles": "./assets/particles/templates/drugs.pex",
+    "particles_offset": {
+      "x": 0.3,
+      "y": 0.15,
+      "z": 1.0
+    }
+  },
   {
     "title": "Druid",
     "portrait": "./assets/portraits/druid.png",
     "particles": "./assets/particles/templates/crown_light.pex",
-    "particles_offset": {"x": 0.3, "y": 0.5, "z":  1.0},
-    "abilities": [
-      {
-        "cost": "-XX",
-        "name": "???",
-        "description": "???????"
-      },
-      {
-        "cost": "-XX",
-        "name": "???",
-        "description": "???????"
-      },
-      {
-        "cost": "-X",
-        "name": "???",
-        "description": "???????"
-      }
-    ]
-  },
-  {
-
+    "particles_offset": {
+      "x": 0.3,
+      "y": 0.5,
+      "z": 1.0
+    }
   }
 ]

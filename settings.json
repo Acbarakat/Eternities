@@ -1,0 +1,14 @@
+[
+    {
+        "type": "title",
+        "title": "Graphics"
+    },
+    {
+        "type": "bool",
+        "title": "Particles",
+        "desc": "Show particles. This may be taxing on some mobile devices.",
+        "section": "Graphics",
+        "key": "particles",
+        "true": "auto"
+    }
+]
