@@ -1,11 +1,16 @@
 FloatLayout:
+	id: main_layout
 	MainView:
 		cols: 1
 		size_hint: (.75, 0.55)
 		pos_hint: {'x': 0.25, 'y': 0.0}
-	Widget:
+	FloatLayout:
+		id: background_particles
 	Image:
+		id: character_portrait
 		pos_hint: {'x': -0.25, 'y': -0.25}
+	FloatLayout:
+		id: foreground_particles
 	BoxLayout:
 		orientation: 'vertical'
 		size_hint: (0.3, 0.1)
@@ -13,6 +18,10 @@ FloatLayout:
 		Button:
 			text: 'Configure app (or press F1)'
 			on_release: app.open_settings()
+			pos_hint: {'center_x': 0.0, 'center_y': 0.0}
+		Spinner:
+			id: class_spinner
+			pos_hint: {'center_x': 0.0, 'center_y': 0.0}
 
 [ThumbnailedListItem@SelectableView+RelativeLayout]:
     index: ctx.index

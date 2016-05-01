@@ -1,12 +1,14 @@
-[
-   {
-    "title": "Mage",
+{
+  "Mage 1": {
     "portrait": "./assets/portraits/17.png",
     "particles": "./assets/particles/templates/sun.pex",
-    "particles_offset": {"x": 0.3, "y": 0.15, "z":  1.0}
+    "particles_offset": {
+      "x": 0.3,
+      "y": 0.15,
+      "z": 1.0
+    }
   },
-  {
-    "title": "Mage",
+  "Mage 2": {
     "portrait": "./assets/portraits/9.png",
     "particles": "./assets/particles/templates/drugs.pex",
     "particles_offset": {
@@ -15,8 +17,7 @@
       "z": 1.0
     }
   },
-  {
-    "title": "Druid",
+  "Druid": {
     "portrait": "./assets/portraits/druid.png",
     "particles": "./assets/particles/templates/crown_light.pex",
     "particles_offset": {
@@ -25,4 +26,4 @@
       "z": 1.0
     }
   }
-]
+}

@@ -111,7 +111,7 @@
     <Content Include="requirements_win.bat">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="sample.json">
+    <Content Include="classes.json">
       <SubType>Code</SubType>
     </Content>
     <Content Include="settings.json" />
