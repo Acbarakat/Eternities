@@ -2,14 +2,15 @@ import kivy
 kivy.require('1.9.1')
 
 from kivy.app import App
-from kivy.adapters.dictadapter import DictAdapter
+from kivy.adapters.listadapter import ListAdapter
 from kivy.uix.listview import ListView
 from kivy.uix.image import Image
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.core.text import LabelBase
-from kivy.uix.settings import SettingsWithTabbedPanel
+from kivy.uix.settings import SettingsWithSpinner
 from kivy.logger import Logger
+from kivy.core.window import Window
 
 try:
     import particlesystem as kParticles
@@ -21,38 +22,73 @@ import random
 import common
 
 class MainApp(App):
+    use_kivy_settings = True
+
+    class_data = {}
+
     def build(self):
         """
         Build and return the root widget.
         """
-        # The line below is optional. You could leave it out or use one of the
-        # standard options, such as SettingsWithSidebar, SettingsWithSpinner
-        # etc.
-        self.settings_cls = SettingsWithTabbedPanel
+        self.settings_cls = SettingsWithSpinner
 
-        with open("sample.json") as f:
-            class_data = json.load(f)       
+        Window.size = (1920, 1080)
+        Window.minimum_width = 1280
+        Window.minimum_height = 800
+        #Window.clearcolor = (1, 0, 0, 1)
+        #Window.fullscreen = True
+        print(Window.dpi)
+        print(Window.size)
 
-        class_picked = class_data[1]
 
-        new_particle = kParticles.ParticleSystem(class_picked["particles"])
-        #TODO: Don't use static numbers
-        new_particle.pos_hint = class_picked["particles_offset"]
-        
-        self.root.children[-3].source = class_picked["portrait"]
+        with open("classes.json") as f:
+            self.class_data = json.load(f)
 
-        if class_picked["particles_offset"]["z"] > 0:
-            self.root.add_widget(new_particle)
-        else:
-            self.root.children[-2].add_widget(new_particle)
+        class_picker        = self.root.ids["class_spinner"]
+        class_picker.values = self.class_data.keys()
+        class_picker.bind(text=self.on_class_change)
+        class_picker.text   = self.class_data.keys()[0]
 
-        if self.config.getdefault("Graphics", "particles", "1") == "1":
-            new_particle.start()
-    
+        #Register custom fonts
         for font in common.FONTS:
             LabelBase.register(**font)
 
         return self.root
+
+    def on_class_change(self, class_picker, text):
+        class_picked = self.class_data[text]
+
+        #Use the particle system
+        new_particle = kParticles.ParticleSystem(class_picked["particles"])
+        #TODO: Don't use static numbers
+        new_particle.pos_hint = class_picked["particles_offset"]
+        
+        self.root.ids["character_portrait"].source = class_picked["portrait"]
+    
+        self.root.ids["background_particles"].clear_widgets()
+        self.root.ids["foreground_particles"].clear_widgets()
+
+        if class_picked["particles_offset"]["z"] > 0:
+            self.root.ids["foreground_particles"].add_widget(new_particle)
+        else:
+            self.root.ids["background_particles"].add_widget(new_particle)
+
+        if self.config.getdefault("Graphics", "particles", "1") == "1":
+            new_particle.start()
+
+        args_converter = lambda row_index, rec: {
+            'text': rec['text'],
+            'loyalty': rec['loyalty'],
+            'loyalty_source': common.LOYALTY[rec['loyalty'][0]],
+            'height': common.ABILITY_HEIGHT
+        }
+
+        self.root.ids["planeswalker_abilties"].adapter = ListAdapter(data=class_picked["planeswalker_abilities"],
+                                                                     args_converter=args_converter,
+                                                                     selection_mode='single',
+                                                                     allow_empty_selection=False,
+                                                                     template='ThumbnailedListItem')
+
 
     def build_config(self, config):
         """
@@ -60,6 +96,8 @@ class MainApp(App):
         """
         config.setdefaults('Graphics', {
             'particles': True,
+            'ScreenX': 1440,
+            'ScreenY': 900
         })
 
     def build_settings(self, settings):
@@ -77,7 +115,7 @@ class MainApp(App):
 
         if section == "Graphics":
             if key == "particles":
-                for widget in self.root.children:
+                for widget in self.root.walk():
                     if isinstance(widget, kParticles.ParticleSystem):
                         if value == "1":
                             widget.start()
@@ -107,47 +145,6 @@ class MainApp(App):
     def on_resume(self):
       # Here you can check if any data needs replacing (usually nothing)
       pass
-
-class MainView(GridLayout):
-    '''Uses :class:`CompositeListItem` for list item views comprised by two
-    :class:`ListItemButton`s and one :class:`ListItemLabel`. Illustrates how
-    to construct the fairly involved args_converter used with
-    :class:`CompositeListItem`.
-    '''
-
-    def __init__(self, **kwargs):
-        super(MainView, self).__init__(**kwargs)
-
-        args_converter = lambda row_index, rec: {
-            'text': str(self.size) + rec['text'],
-            'loyalty': rec['loyalty'],
-            'loyalty_source': common.LOYALTY[rec['loyalty'][0]],
-            'height': common.ABILITY_HEIGHT
-        }
-
-        integers_dict = {str(i): {'text': "This is a test ability string #%s" % str(i),
-                                  'loyalty': "0",
-                                  'is_selected': False} for i in range(50)}
-
-        item_sort_list  = sorted(integers_dict.items(), key=lambda x: int(x[1]["loyalty"]))
-        item_sort_list.reverse()
-        item_sort_list  = [ x for x,y in item_sort_list ]
-
-        dict_adapter = DictAdapter(sorted_keys=item_sort_list,
-                                   data=integers_dict,
-                                   args_converter=args_converter,
-                                   selection_mode='single',
-                                   allow_empty_selection=False,
-                                   template='ThumbnailedListItem')
-
-        # Use the adapter in our ListView:
-        list_view = ListView(adapter=dict_adapter)
-
-        self.add_widget(list_view)
-
-    #def on_size(self, *args):
-    #    print("woof")
-    #    print(args)
 
 if __name__ == "__main__":
     MainApp().run()

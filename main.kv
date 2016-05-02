@@ -1,14 +1,14 @@
 FloatLayout:
 	id: main_layout
-	MainView:
-		cols: 1
-		size_hint: (.75, 0.55)
-		pos_hint: {'x': 0.25, 'y': 0.0}
+	ListView:
+		id: planeswalker_abilties
+		size_hint: (.85, 0.35)
+		pos_hint: {'x': 0.15, 'y': 0.0}
 	FloatLayout:
 		id: background_particles
 	Image:
 		id: character_portrait
-		pos_hint: {'x': -0.25, 'y': -0.25}
+		pos_hint: {'x': -0.35, 'y': -0.35}
 	FloatLayout:
 		id: foreground_particles
 	BoxLayout:
@@ -38,10 +38,10 @@ FloatLayout:
         source: ctx.loyalty_source
         size_hint_x: 0.1
         size_hint_y: 1.0
-        pos_hint: {'x': 0.915, 'y': 0}
+        pos_hint: {'x': 0.905, 'y': 0}
     Label:
-		text: "[font=Beleren]%s[/font]" % ctx.loyalty
+		text: "[font=Beleren][size=24][b]%s[/b][/size][/font]" % ctx.loyalty
         width: 20
         halight: 'center'
         markup: True
-        pos_hint: {'x': 0.465, 'y': 0}
+        pos_hint: {'x': 0.455, 'y': 0}
