@@ -87,7 +87,7 @@ android.permissions = INTERNET
 #android.private_storage = False
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
-3android.ndk_path = /home/ubuntu/.buildozer/android/platform/android-ndk-r9c
+#android.ndk_path = /home/ubuntu/.buildozer/android/platform/android-ndk-r9c
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
 #android.sdk_path = /home/ubuntu/.buildozer/android/platform/android-sdk-20
