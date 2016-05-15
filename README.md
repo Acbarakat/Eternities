@@ -67,3 +67,9 @@ Once you have copied/synced locally and wish to try it out in the android device
 sudo requirements_lin.sh
 ```
 
+### Running the project on Android
+```
+cd '$WORKSPACE'
+rm -rf '$WORKSPACE/bin'
+buildozer -v android debug deploy run logcat
+```
