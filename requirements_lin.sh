@@ -1,5 +1,4 @@
 #! /bin/sh
-
 sudo add-apt-repository ppa:kivy-team/kivy -y
 sudo add-apt-repository ppa:mc3man/trusty-media -y
 
@@ -9,4 +8,3 @@ sudo apt-get install -y python-pip build-essential  git python python-dev ffmpeg
 
 sudo apt-get install -y python-kivy
 
-python -m pip install -r requirements.txt -- upgrade
