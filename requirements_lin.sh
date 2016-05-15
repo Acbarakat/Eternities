@@ -8,3 +8,4 @@ sudo apt-get install -y python-pip build-essential  git python python-dev ffmpeg
 
 sudo apt-get install -y python-kivy
 
+python -m pip install -r ./requirements.txt --upgrade
